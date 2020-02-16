@@ -1,0 +1,38 @@
+select c.continent, sum(py.population), py.year 
+from countries c
+left join population_years py on py.country_id = c.id
+where c.continent = 'Oceania'
+and year = 2005;
+-- group by c.continent; 
+
+select c.continent, round(sum(py.population), 2) total_pop, py.year 
+from countries c
+left join population_years py on py.country_id = c.id
+where c.continent = 'Oceania'
+and year = 2006; 
+
+select c.continent, round(avg(py.population), 2) avg_pop, py.year
+from countries c
+left join population_years py on py.country_id = c.id
+where c.continent = 'South America'
+and year = 2003;
+
+select c.continent, round(avg(py.population), 2) avg_pop, py.year
+from countries c
+left join population_years py on py.country_id = c.id
+where c.continent = 'South America'
+and year = 2008;
+
+select c.name, min(py.population), year
+from countries c
+left join population_years py on py.country_id = c.id
+where year = 2007;
+
+select c.name, avg(py.population), py.year, count(*)
+from countries c
+left join population_years py on py.country_id = c.id
+where c.name = 'Poland'
+and py.year between 2000 and 2010;
+
+select distinct year
+from population_years;
